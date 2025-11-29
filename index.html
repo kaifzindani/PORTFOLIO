@@ -5,10 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - M.Kaif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="responsive.css">
     <style>
+/* Preloader Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a0a0a, #2d1414, #1a0a0a);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-text {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(45deg, darkred, burlywood, darkred);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite, fadeIn 1s ease;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.preloader-spinner {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.spinner-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: darkred;
+    border-right-color: burlywood;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+}
+
+.spinner-circle:nth-child(2) {
+    border-top-color: burlywood;
+    border-right-color: darkred;
+    animation-delay: -0.75s;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-progress {
+    margin-top: 30px;
+    width: 250px;
+    height: 4px;
+    background: rgba(222, 184, 135, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, darkred, burlywood);
+    width: 0%;
+    animation: loadProgress 2s ease forwards;
+    box-shadow: 0 0 10px rgba(222, 184, 135, 0.5);
+}
+
+@keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
 /* Hamburger Menu Styles */
 .hamburger {
     display: none;
@@ -68,6 +162,14 @@
         display: flex;
     }
 
+    .preloader-text {
+        font-size: 32px;
+    }
+
+    .preloader-progress {
+        width: 200px;
+    }
+
     header {
         position: fixed !important;
         width: 100%;
@@ -76,6 +178,7 @@
         display: flex;
         flex-direction: row;
     }
+    
     nav {
         position: fixed;
         top: 0;
@@ -105,6 +208,9 @@
         border-bottom: 1px solid rgba(222, 184, 135, 0.2);
         opacity: 0;
         transform: translateX(50px);
+    }
+
+    nav.active ul li {
         animation: slideInRight 0.5s ease forwards;
     }
 
@@ -147,6 +253,10 @@
 }
 
 @media (max-width: 480px) {
+    .preloader-text {
+        font-size: 28px;
+    }
+
     nav {
         width: 85%;
     }
@@ -156,63 +266,77 @@
         padding: 18px 25px;
     }
 }
-</style>
+    </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-text">KAIF ZINDANI</div>
+        <div class="preloader-spinner">
+            <div class="spinner-circle"></div>
+            <div class="spinner-circle"></div>
+        </div>
+        <div class="preloader-progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
     <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
     
     <header>
-    <h2 class="lion">M.Kaif</h2>
-    
-    <!-- Hamburger Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    
-    <nav id="nav">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header
+        <h2 class="lion">M.Kaif</h2>
+        
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Nav Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <main>
         <section id="home" class="hero-section">
             <div class="hero-content">
                 <h2 id="im">I'M Kaif Zindani</h2>
                 <h2 style="color: burlywood; font-size: 40px;">Web Developer</h2>
-                <p>I have strong skills in HTML, CSS, and JavaScript, and I specialize in creating responsive, interactive websites using Bootstrap. My focus is on building clean, user-friendly interfaces that offer a seamless experience. I’m also proficient in Git and GitHub, ensuring efficient version control and smooth project collaboration.</p>
+                <p>I have strong skills in HTML, CSS, and JavaScript, and I specialize in creating responsive, interactive websites using Bootstrap. My focus is on building clean, user-friendly interfaces that offer a seamless experience. I'm also proficient in Git and GitHub, ensuring efficient version control and smooth project collaboration.</p>
                 
                 <div class="hero-buttons">
                     <button class="open-btn">DOWNLOAD CV</button>
 
-    <div class="modal-overlay" id="modalOverlay"></div>
-
-      <div class="modal-overlay" id="modalOverlay"></div>
-            <div class="modal" id="modal">
-                <div class="glow-line"></div>
-                <div class="modal-corner tl"></div>
-                <div class="modal-corner tr"></div>
-                <div class="modal-corner bl"></div>
-                <div class="modal-corner br"></div>
-                <div class="modal-header">
-                    <h2 class="modal-title">Download Your CV</h2>
-                    <button class="close-btn" id="closeBtn">&times;</button>
-                </div>
-                
-                <div class="modal-buttons">
-                    <button class="modal-btn" id="cancelBtn">Cancel</button>
-                    <a href="kaif-cv.jpg" download class="modal-btn" id="confirmBtn">Download CV</a>
-                </div>
-            </div>
+                    <div class="modal-overlay" id="modalOverlay"></div>
+                    
+                    <div class="modal" id="modal">
+                        <div class="glow-line"></div>
+                        <div class="modal-corner tl"></div>
+                        <div class="modal-corner tr"></div>
+                        <div class="modal-corner bl"></div>
+                        <div class="modal-corner br"></div>
+                        <div class="modal-header">
+                            <h2 class="modal-title">Download Your CV</h2>
+                            <button class="close-btn" id="closeBtn">&times;</button>
+                        </div>
+                        
+                        <div class="modal-buttons">
+                            <button class="modal-btn" id="cancelBtn">Cancel</button>
+                            <a href="kaif-cv.jpg" download class="modal-btn" id="confirmBtn">Download CV</a>
+                        </div>
+                    </div>
                     <a href="#contact"><span>Contact Me</span></a>
                 </div>
             </div>
@@ -233,6 +357,7 @@
                     <h2 class="big-title">About Me</h2>
                     <p class="about-text">
                         I'm Kaif Zindani, a passionate Full-Stack Web Developer with a strong track record of creating dynamic, user-friendly, and fully responsive websites. With expertise across frontend and backend development, database management, and API integration, I combine clean, efficient code with creative design to deliver smooth, engaging, and seamless digital experiences.
+                    </p>
                     <div class="info-box">
                         <div><i class="fa-solid fa-user icon"></i> <strong>Name:</strong> MUHAMMAD KAIF</div>
                         <div><i class="fa-solid fa-phone icon"></i> <strong>Phone:</strong> 0331-2844015</div>
@@ -361,44 +486,45 @@
                 </div>
             </div>
         </section>
+
         <section class="kaif1" id="contact">
             <div class="container">
-        <div class="contact-info">
-            <h1>Contact Information</h1>
-            <p>Have a project in mind or just want to say hello? I'm always open to discussing new ideas, creative collaborations, or opportunities to be part of your vision.</p>
-            <div class="contact-details">
-                <div><span>Location:</span> Karachi, Pakistan</div>
-                <div><span>Phone:</span> <a href="tel:+923312844015">+923312844015</a></div>
-                <div><span>Email:</span> <a href="mailto:dayyanasif93@gmail.com">kaifzindani@gmail.com</a></div>
+                <div class="contact-info">
+                    <h1>Contact Information</h1>
+                    <p>Have a project in mind or just want to say hello? I'm always open to discussing new ideas, creative collaborations, or opportunities to be part of your vision.</p>
+                    <div class="contact-details">
+                        <div><span>Location:</span> Karachi, Pakistan</div>
+                        <div><span>Phone:</span> <a href="tel:+923312844015">+923312844015</a></div>
+                        <div><span>Email:</span> <a href="mailto:kaifzindani@gmail.com">kaifzindani@gmail.com</a></div>
+                    </div>
+                </div>
+
+                <div class="message-form">
+                    <h1>Send Us a Message</h1>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="a99741c7-e021-43fc-a32e-fb0475e5290d">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <div class="corner corner-tl"></div>
+                            <div class="corner corner-tr"></div>
+                            <div class="corner corner-bl"></div>
+                            <div class="corner corner-br"></div>
+                            <div class="particle" style="--tx: -15px;"></div>
+                            <div class="particle" style="--tx: 15px;"></div>
+                            <div class="particle" style="--tx: 0px;"></div>
+                            <span class="text">Submit</span>
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
-
-        <div class="message-form">
-            <h1>Send Us a Message</h1>
-            <form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="a99741c7-e021-43fc-a32e-fb0475e5290d">
-                <div class="form-group">
-                    <input type="text" id="name"  name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email"  placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                <div class="container">
-        <button class="submit-btn">
-            <div class="corner corner-tl"></div>
-            <div class="corner corner-tr"></div>
-            <div class="corner corner-bl"></div>
-            <div class="corner corner-br"></div>
-            <div class="particle" style="--tx: -15px;"></div>
-            <div class="particle" style="--tx: 15px;"></div>
-            <div class="particle" style="--tx: 0px;"></div>
-            <span class="text">Submit</span>
-        </button>
-    </div>
-    </div>
-
         </section>
     </main>
 
@@ -433,182 +559,26 @@
             </div>
         </div>
     </footer>
+
     <a href="https://wa.me/923312844015?text=Hello%20Kaif%21%20I%20would%20like%20to%20discuss%20a%20project%20with%20you" class="whatsapp-floating" target="_blank" title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
-const navOverlay = document.getElementById('navOverlay');
-const navLinks = document.querySelectorAll('nav ul li a');
-
-// Toggle menu on hamburger click
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-    navOverlay.classList.toggle('active');
-    document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-});
-
-// Close menu on overlay click
-navOverlay.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    nav.classList.remove('active');
-    navOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-});
-
-// Close menu when clicking on nav links
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-        navOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-// Close menu on window resize if open
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-        navOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-        // Animate skill bars on scroll
-        
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Animate skill bars on scroll
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progressBars = entry.target.querySelectorAll('.progress-value');
-                    progressBars.forEach(bar => {
-                        const progress = bar.getAttribute('data-progress');
-                        bar.style.width = progress + '%';
-                    });
-                }
-            });
-        }, observerOptions);
-
-        observer.observe(document.querySelector('.skills-section'));
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.js" integrity="sha512-eUJ3eP9+avp5kHKhfx5gB0vzLEgMkZiOmZcpVqJmlg9hMMse2SChMOTSDWl6oYGfmYW2N7oO/W6CqpgYBneqKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Preloader Script -->
     <script>
-const btn = document.querySelector('.submit-btn');
-        
-        btn.addEventListener('click', function() {
-            this.style.transform = 'scale(0.95)';
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
             setTimeout(() => {
-                this.style.transform = 'scale(1.05)';
+                preloader.classList.add('fade-out');
                 setTimeout(() => {
-                    this.style.transform = '';
-                }, 100);
-            }, 50);
-        });
-
-        btn.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            this.style.setProperty('--mouse-x', x + 'px');
-            this.style.setProperty('--mouse-y', y + 'px');
-        });
-        // const openBtn = document.querySelector('.open-btn');
-        // const modal = document.getElementById('modal');
-        // const modalOverlay = document.getElementById('modalOverlay');
-        // const closeBtn = document.getElementById('closeBtn');
-        // const cancelBtn = document.getElementById('cancelBtn');
-        // const confirmBtn = document.getElementById('confirmBtn');
-
-        // // Open modal
-        // openBtn.addEventListener('click', () => {
-        //     modal.classList.add('active');
-        //     modalOverlay.classList.add('active');
-        // });
-
-        // // Close modal function
-        // function closeModal() {
-        //     modal.classList.remove('active');
-        //     modalOverlay.classList.remove('active');
-        // }
-
-        // // Close button
-        // closeBtn.addEventListener('click', closeModal);
-
-        // // Cancel button
-        // cancelBtn.addEventListener('click', closeModal);
-
-        // // Confirm button
-        // confirmBtn.addEventListener('click', () => {
-        //     alert('Confirmed! 🎉');
-        //     closeModal();
-        // });
-
-        // // Click outside modal to close
-        // modalOverlay.addEventListener('click', closeModal);
-
-        // // Prevent modal from closing when clicking inside it
-        // modal.addEventListener('click', (e) => {
-        //     e.stopPropagation();
-        // });
-        const openBtn = document.querySelector('.open-btn');
-        const modal = document.getElementById('modal');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeBtn = document.getElementById('closeBtn');
-        const cancelBtn = document.getElementById('cancelBtn');
-
-        // Open modal
-        openBtn.addEventListener('click', () => {
-            modal.classList.add('active');
-            modalOverlay.classList.add('active');
-        });
-
-        // Close modal function
-        function closeModal() {
-            modal.classList.remove('active');
-            modalOverlay.classList.remove('active');
-        }
-
-        // Close button
-        closeBtn.addEventListener('click', closeModal);
-
-        // Cancel button
-        cancelBtn.addEventListener('click', closeModal);
-
-        // Click outside modal to close
-        modalOverlay.addEventListener('click', closeModal);
-
-        // Prevent modal from closing when clicking inside it
-        modal.addEventListener('click', (e) => {
-            e.stopPropagation();
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 2000);
         });
     </script>
+    
+    <script src="main.js"></script>
 </body>
 </html>
-
