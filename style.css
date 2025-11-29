@@ -102,7 +102,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 80px 10%;
-            background: linear-gradient(135deg, #f7f8fb, #cdcaca);
+            background: white;
             min-height: 90vh;
             gap: 50px;
         }
@@ -349,7 +349,7 @@
 
         /* Education Section */
         .education-section {
-            background: linear-gradient(135deg, #f7f8fb, white);
+            background: white;
             padding: 80px 10%;
         }
 
@@ -434,7 +434,7 @@
             transform: translateX(-50%);
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, darkred, burlywood);
+            background: linear-gradient(135deg, burlywood, darkred);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -480,7 +480,7 @@
 
         /* Skills Section */
         .skills-section {
-            background: white;
+            background: #CDCACA;
             padding: 80px 10%;
         }
 
