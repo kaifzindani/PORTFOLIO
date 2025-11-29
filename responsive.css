@@ -1,0 +1,476 @@
+@media (max-width: 1024px) {
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 15px 5%;
+        flex-wrap: wrap;
+    }
+
+    .lion {
+        font-size: 22px;
+    }
+
+    nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 6px 12px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    .lion {
+        font-size: 20px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+}
+    .hero-section {
+        padding: 60px 5%;
+        gap: 30px;
+    }
+
+    .hero-content h2 {
+        font-size: 40px;
+    }
+
+    #op {
+        width: 350px;
+        height: 350px;
+    }
+
+    .about-section,
+    .education-section,
+    .skills-section {
+        padding: 60px 5%;
+    }
+
+    .timeline-content {
+        width: calc(50% - 30px);
+    }
+}
+
+/* Mobile Devices (up to 768px) */
+@media (max-width: 768px) {
+    /* Header */
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 5%;
+        gap: 15px;
+    }
+
+    .lion {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        flex-direction: column;
+        padding: 40px 5%;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+
+    .hero-content h2[style*="font-size: 40px"] {
+        font-size: 28px !important;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-buttons a,
+    .open-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    #op {
+        width: 280px;
+        height: 280px;
+        margin-top: 30px;
+    }
+
+    /* About Section */
+    .about-section {
+        padding: 40px 5%;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .about-img img {
+        max-width: 300px;
+    }
+
+    .mini-title {
+        font-size: 18px;
+    }
+
+    .big-title {
+        font-size: 32px;
+    }
+
+    .about-text {
+        font-size: 15px;
+    }
+
+    .info-box div {
+        font-size: 16px;
+    }
+
+    .interests {
+        justify-content: center;
+    }
+
+    .interests span {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Education Section */
+    .education-section {
+        padding: 40px 5%;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+    }
+
+    .section-header p {
+        font-size: 16px;
+    }
+
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item {
+        margin-bottom: 40px;
+    }
+
+    .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 60px !important;
+        padding: 20px;
+    }
+
+    .timeline-icon {
+        left: 30px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .timeline-content h3 {
+        font-size: 20px;
+    }
+
+    .timeline-content h4 {
+        font-size: 16px;
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+
+    /* Skills Section */
+    .skills-section {
+        padding: 40px 5%;
+    }
+
+    .progress-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skill {
+        margin-bottom: 20px;
+    }
+
+    .skill-title {
+        font-size: 16px;
+    }
+
+    .progress {
+        height: 25px;
+    }
+
+    .progress-value {
+        font-size: 14px;
+        padding-right: 10px;
+    }
+
+    /* Contact Section */
+    .kaif1 {
+        padding: 40px 5%;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-info h1,
+    .message-form h1 {
+        font-size: 28px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+    }
+
+    .contact-details div {
+        font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 14px 30px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    /* Footer */
+    footer {
+        padding: 40px 5%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-content h3 {
+        font-size: 18px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    /* Modal */
+    .modal {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .modal-content {
+        font-size: 14px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Floating Buttons */
+    .whatsapp-floating {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-floating i {
+        font-size: 26px;
+    }
+
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 90px;
+        right: 20px;
+    }
+
+    .scroll-to-top i {
+        font-size: 20px;
+    }
+}
+
+/* Small Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 28px;
+    }
+
+    .hero-content h2[style*="font-size: 40px"] {
+        font-size: 24px !important;
+    }
+
+    #op {
+        width: 240px;
+        height: 240px;
+    }
+
+    .big-title {
+        font-size: 28px;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+    }
+
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 50px !important;
+        padding: 15px;
+    }
+
+    .timeline-icon {
+        left: 20px;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .contact-info h1,
+    .message-form h1 {
+        font-size: 24px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+}
+
+/* Very Small Devices (up to 360px) */
+@media (max-width: 360px) {
+    .lion {
+        font-size: 20px;
+    }
+
+    nav ul {
+        gap: 5px;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    #op {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-img img {
+        max-width: 250px;
+    }
+
+    .interests span {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 30px 5%;
+    }
+
+    #op {
+        width: 200px;
+        height: 200px;
+    }
+
+    header {
+        height: auto;
+        padding: 10px 5%;
+    }
+}
+
+/* Fix for overlapping elements */
+@media (max-width: 768px) {
+    * {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+    button,
+    a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
