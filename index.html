@@ -8,6 +8,155 @@
    <link rel="stylesheet" href="style.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="responsive .css">
+    <style>
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1002;
+    gap: 6px;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: darkred;
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(9px, 9px);
+    background: burlywood;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(9px, -9px);
+    background: burlywood;
+}
+
+/* Nav Overlay */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile Responsive - Hamburger Menu */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    header {
+        position: fixed !important;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: linear-gradient(135deg, #2d1414, #1a0a0a);
+        transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 1000;
+        padding-top: 80px;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(222, 184, 135, 0.2);
+        opacity: 0;
+        transform: translateX(50px);
+        animation: slideInRight 0.5s ease forwards;
+    }
+
+    nav.active ul li:nth-child(1) { animation-delay: 0.1s; }
+    nav.active ul li:nth-child(2) { animation-delay: 0.2s; }
+    nav.active ul li:nth-child(3) { animation-delay: 0.3s; }
+    nav.active ul li:nth-child(4) { animation-delay: 0.4s; }
+    nav.active ul li:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 20px 30px;
+        font-size: 18px;
+        color: burlywood;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a::before {
+        display: none;
+    }
+
+    nav ul li a:hover {
+        background: rgba(222, 184, 135, 0.1);
+        padding-left: 40px;
+        color: darkred;
+    }
+
+    /* Add padding to body for fixed header */
+    body {
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        width: 85%;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        padding: 18px 25px;
+    }
+}
+</style>
 </head>
 <body>
     <div class="scroll-to-top" id="scrollToTop">
@@ -15,17 +164,25 @@
     </div>
     
     <header>
-        <h2 class="lion">M.Kaif</h2>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h2 class="lion">M.Kaif</h2>
+    
+    <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav id="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header
 
     <main>
         <section id="home" class="hero-section">
@@ -281,6 +438,46 @@
     </a>
 
     <script>
+        const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav');
+const navOverlay = document.getElementById('navOverlay');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+});
+
+// Close menu on overlay click
+navOverlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    nav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+// Close menu when clicking on nav links
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Close menu on window resize if open
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
         // Animate skill bars on scroll
         
         // Scroll to Top Button
