@@ -214,19 +214,18 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        #op {
+       #op {
             width: 450px;
             height: 450px;
             border-radius: 50%;
             border: 8px solid darkred;
-            background-image: url('WhatsApp\ Image\ 2025-11-21\ at\ 19.07.31_3b3fda28.jpg');
-            background-size: 140%;
+            background-image: url(WhatsApp\ Image\ 2025-12-27\ at\ 4.38.14\ PM.jpeg);
+            background-size: 80%;
             background-position: center 20%;
             animation: float 3s ease-in-out infinite;
             box-shadow: 0 20px 60px rgba(139, 0, 0, 0.3);
             position: relative;
         }
-
         #op::before {
             content: '';
             position: absolute;
@@ -1129,3 +1128,4 @@
         
 
     
+
